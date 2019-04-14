@@ -1,2 +1,6 @@
 *.class
 *.log
+
+Serializer/.idea/**
+Serializer/project/target/**
+Serializer/target/**
