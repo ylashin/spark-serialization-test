@@ -22,7 +22,7 @@ case class Invoice(InvoiceNo: String,
 
 object InvoiceGenerator {
 
-  def generateSomeInvoices() = (0 to 100000)
+  def generateSomeInvoices() = (1 to 100000)
     .map(x =>
       Invoice(
         s"INV-$x",

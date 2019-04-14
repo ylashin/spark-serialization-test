@@ -4,10 +4,10 @@ import org.apache.spark.storage.StorageLevel
 
 
 object Serializer extends App {
+
   private def getConfig(useKryo: Boolean) = {
     val conf = new SparkConf()
     if (useKryo) {
-
       val classesToRegister: Array[Class[_]] = Array(
         classOf[Invoice],
         classOf[Customer],
@@ -18,7 +18,6 @@ object Serializer extends App {
         classOf[Array[ProductLineItem]],
         classOf[scala.collection.mutable.WrappedArray.ofRef[_]]
       )
-
       conf.registerKryoClasses(classesToRegister)
       conf.set("spark.kryo.registrationRequired", "true")
     }
@@ -27,7 +26,7 @@ object Serializer extends App {
   }
 
   val spark = SparkSession.builder()
-    .appName("Spark Example")
+    .appName("Serializer")
     .config(getConfig(args.length > 0 && args(0).toLowerCase == "kryo"))
     .config("spark.local.dir", "E:\\Temp")
     .getOrCreate()
